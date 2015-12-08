@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
   def require_no_user
     redirect_to root_path if current_user
   end
+
+  def require_admin
+    redirect_to root_path unless @current_user.role != "admin"
+  end
 end
