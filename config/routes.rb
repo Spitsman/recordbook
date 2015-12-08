@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'users#show'
   get 'profile' => 'users#show'
   get 'login' => 'sessions#new', as: :login
@@ -7,5 +6,6 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   post 'signup' => 'users#create'
   delete 'logout' => 'sessions#destroy', as: :logout
-  get ':id' => 'infopages#show'
+  get ':id' => 'infopage#show'
+  get 'users/all' => 'users#all'
 end

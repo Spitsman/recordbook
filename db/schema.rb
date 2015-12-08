@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207230909) do
+ActiveRecord::Schema.define(version: 20151207224804) do
 
   create_table "infopages", force: :cascade do |t|
     t.string   "img_url"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20151207230909) do
     t.string   "name"
     t.string   "faculty"
     t.string   "adress"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
