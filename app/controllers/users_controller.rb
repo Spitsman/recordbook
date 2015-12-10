@@ -1,26 +1,28 @@
 class UsersController < ApplicationController
 
-	helper_method :resource_user, :users_collection, :user_policy
+	helper_method :resource_user, :users_collection
 
 	before_action :require_user, only: [:show, :all]
-	before_action :require_no_user, only: [:new, :create]
+	before_action :require_admin, only: [:all, :create, :new, :destroy, :update]
 
 	def show
+		redirect_to admin_panel_path if current_user.admin?
 	end
 
 	def new
 	end
 
-	def all
-		authorize
+	def all			
 	end
 
-	def create
-	  if resource_user.save
-	  	redirect_to root_path
-	 	else 
-	 		render :new
-		end 
+	def create 
+	  @user = User.new(user_params)
+	  if @user.valid? && password_confirmed? && unique_user?
+	  	@user.save
+	  	redirect_to admin_panel_path
+	  else 
+	    render :new
+	  end 
 	end
 
 	def destroy
@@ -28,22 +30,26 @@ class UsersController < ApplicationController
 		redirect_to root_path
 	end
 
+	def update
+
+	end
+
 	private
-
-	def authorize
-		redirect_to root_path unless user_policy.show? # должен писать "в доступе отказано"
-	end
-
-	def user_policy
-		@user_policy ||= UserPolicy.new(current_user)
-	end
 
 	def users_collection
 		@users_collection ||= User.all
 	end
 
-	def resource_user
-		@resource_user ||= User.new(params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation))
-	end
+	def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
+  end
+
+  def unique_user? 	
+  	!User.exists?(email: params[:user][:email])
+  end
+
+  def password_confirmed?
+  	params[:user][:password] == params[:user][:password_confirmation]
+  end
 
 end

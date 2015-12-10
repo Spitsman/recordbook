@@ -1,12 +1,11 @@
 <div class="login-form wrapper">
-  <span class="login-form__title signup_title">Зарегистрируйтесь</span>
+  <span class="login-form__title signup_title">Зарегистрируйте студента</span>
   <%= form_for :user, url: signup_path do |f| %>
     <%= f.text_field :first_name, :placeholder => "First name" , class:"login-form__text" %></br>
     <%= f.text_field :last_name, :placeholder => "Last name", class:"login-form__text" %></br>
     <%= f.text_field :email, :placeholder => "E-mail",class:"login-form__text" %></br>
     <%= f.password_field :password, :placeholder => "Password",class:"login-form__text" %></br>
     <%= f.password_field :password_confirmation, :placeholder => "Confirm password", class:"login-form__text" %></br>
-    <%= f.submit "Зарегистрироваться", class:"login-form__submit signup_submit" %>
+    <%= f.submit "Зарегистрировать", class:"login-form__submit signup_submit" %>
   <% end %>
-  <%= link_to 'Войти', login_path, class:"login-form__else" %>
 </div>

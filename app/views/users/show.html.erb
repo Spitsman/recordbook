@@ -1,7 +1,4 @@
 <h1>Profile</h1>
-<% if user_policy.show? %>
- <p><%= link_to 'Users list', 'users/all' %></p>
-<% end %>
 <%= current_user.first_name %>
 <%= current_user.last_name %>
 <%= current_user.email %>

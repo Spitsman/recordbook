@@ -1,5 +1,10 @@
-<h1>Users list</h1>
+<h1>Admin Panel</h1>
+<p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
+<p><%= link_to 'Зарегистрировать студента', signup_path %></p>
 <% users_collection.map do |user| %>
- <%= user.first_name %>
- <%= user.last_name %><br>
+	First name: <%= user.first_name %> <br>
+	Last name: <%= user.last_name %> <br>
+	E-mail: <%= user.email %> <br>
+	<%= link_to 'Удалить студента', destroy_user_path(required_user: user), method: 'delete', data: { confirm: 'Are you sure?' } %><br>
+	<hr>
 <% end %>
