@@ -1,10 +1,13 @@
-<h1>Admin Panel</h1>
-<p><%= link_to 'Logout', logout_path, method: 'delete' %></p>
-<p><%= link_to 'Зарегистрировать студента', signup_path %></p>
-<% users_collection.map do |user| %>
-	First name: <%= user.first_name %> <br>
-	Last name: <%= user.last_name %> <br>
-	E-mail: <%= user.email %> <br>
-	<%= link_to 'Удалить студента', destroy_user_path(required_user: user), method: 'delete', data: { confirm: 'Are you sure?' } %><br>
-	<hr>
-<% end %>
+<div class="admin-panel wrapper">
+	<span class="admin-panel__title">Панель администратора</span>
+	<%= link_to 'Выйти', logout_path, method: 'delete', class:"button_redirect" %>
+	<%= link_to 'Зарегистрировать студента', signup_path , class:"button_redirect" %>
+	<% users_collection.map do |user| %>
+	<div class="admin-panel__user">
+		<p class="admin-panel__user-field">Имя: <%= user.first_name %></p>
+		<p class="admin-panel__user-field">Фамилия: <%= user.last_name %></p>
+		<p class="admin-panel__user-field">E-mail: <%= user.email %></p>
+		<%= link_to 'Удалить студента', destroy_user_path(required_user: user), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"admin-panel__user-delete" %>
+	</div>
+	<% end %>
+</div>
