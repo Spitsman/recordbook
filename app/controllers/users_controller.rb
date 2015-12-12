@@ -6,7 +6,16 @@ class UsersController < ApplicationController
 	before_action :require_admin, only: [:all, :create, :new, :destroy, :update]
 
 	def show
-		redirect_to admin_panel_path if current_user.admin?
+		if current_user.admin?
+			if (params[:id] == nil)
+				@user = current_user
+				redirect_to admin_panel_path
+			else
+				@user = User.find(params[:id])
+			end
+		else
+			@user = User.find(session[:user_id])
+		end
 	end
 
 	def new

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'users#show'
-  get 'profile' => 'users#show'
+  get 'profile/:id' => 'users#show', as: :user
   get 'login' => 'sessions#new', as: :login
   get 'signup' => 'users#new', as: :signup
   post 'login' => 'sessions#create'

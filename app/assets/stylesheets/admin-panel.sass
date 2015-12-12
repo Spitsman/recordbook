@@ -8,7 +8,7 @@
 	box-sizing: border-box
 	display: block
 	border: none
-	padding: 20px 30px
+	padding: 20px
 	margin: auto
 	text-align: center
 	text-decoration: none
@@ -18,7 +18,7 @@
 	border-radius: 10px
 	color: white
 
-.admin-panel__title
+.admin-panel__title,.user__title
 	display: block
 	text-align: center
 	font-size: 35px
@@ -32,9 +32,10 @@
 .admin-panel__user:nth-child(odd)
 	background: #F1FFFF
 
-.admin-panel__user-delete
+.admin-panel__user-button
+	box-sizing: border-box
 	margin: 0 auto
-	padding: 20px 30px
+	padding: 20px
 	display: block
 	text-decoration: none
 	color: black
@@ -43,7 +44,9 @@
 	margin: 10px auto
 	border-radius: 10px
 	color: white
+	text-align: center
+	font-size: 20px 
 
-.admin-panel__user-delete:hover, .button_redirect:hover
+.admin-panel__user-button:hover, .button_redirect:hover
 	transition: all 0.5s
 	background-color: #29ab87

@@ -7,7 +7,7 @@
 		<p class="admin-panel__user-field">Имя: <%= user.first_name %></p>
 		<p class="admin-panel__user-field">Фамилия: <%= user.last_name %></p>
 		<p class="admin-panel__user-field">E-mail: <%= user.email %></p>
-		<%= link_to 'Удалить студента', destroy_user_path(required_user: user), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"admin-panel__user-delete" %>
+		<%= link_to 'Подробнее', user_path(user.id), class:"admin-panel__user-button" %>
 	</div>
 	<% end %>
 </div>

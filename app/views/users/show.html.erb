@@ -1,5 +1,12 @@
-<h1>Profile</h1>
-<%= current_user.first_name %>
-<%= current_user.last_name %>
-<%= current_user.email %>
-<%= link_to 'Logout', logout_path, method: 'delete' %>
+<div class="user wrapper">
+	<span class="user__title">Профиль студента</span>
+	<span class="user__textfield"><%= @user.first_name %></span>
+ 	<span class="user__textfield"><%= @user.last_name %></span>
+	<span class="user__textfield"><%= @user.email %></span> 
+	<% if current_user.admin? %>
+	<%= link_to 'Удалить студента', destroy_user_path(required_user: @user), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"admin-panel__user-button" %>
+	<%= link_to "Назад", admin_panel_path ,class:"admin-panel__user-button" %>
+	<% else %>
+		<%= link_to 'Выйти', logout_path, method: 'delete' , class:"admin-panel__user-button" %>
+	<% end %>
+</div>
