@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
-	acts_as_authentic
-	has_one :infopage, dependent: :destroy
+	has_secure_password
+	has_many :semesters
+
+	def admin?
+		self.role == 'admin'
+	end
+	
 end
