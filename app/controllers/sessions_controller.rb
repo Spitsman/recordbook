@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 	    	redirect_to root_path
 	  	end
 	  else
-	    redirect_to login_path
+	    render :new
   	end 
 	end
 
@@ -24,11 +24,5 @@ class SessionsController < ApplicationController
 		session[:user_id] = nil 
 		redirect_to login_path
 	end
-	
-	private
-
-  def resource_session
-  	@resource_session ||= UserSession.new(params[:session])
-  end
 
 end
