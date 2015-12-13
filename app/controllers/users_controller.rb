@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	helper_method :resource_user, :users_collection, :semesters_collection
 
 	before_action :require_user, only: [:show, :all]
-	before_action :require_admin, only: [:all, :create, :new, :destroy, :update]
+	before_action :require_admin, only: [:all, :create, :new, :destroy, :edit, :update]
 
 	def show
 		redirect_to admin_panel_path if resource_user.admin?
@@ -30,7 +30,20 @@ class UsersController < ApplicationController
 		redirect_to admin_panel_path
 	end
 
+	def edit
+	end
+
 	def update
+		if resource_user.update(user_params)
+			redirect_to(edit_path, :notice => "Пользователь изменен")
+		else 
+			 redirect_to(edit_path, :notice => "Что-то пошло не так...")
+		end
+	end
+
+	def save
+		resource_user.save
+		redirect_to root_path
 	end
 
 	private

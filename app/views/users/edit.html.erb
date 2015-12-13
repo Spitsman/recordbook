@@ -1,0 +1,12 @@
+<div class="wrapper user">
+	<%= form_for (resource_user) do |f| %>
+	<div class="user__textfield">Имя: <%= f.text_field :first_name %></div>
+	<div class="user__textfield">Фамилия: <%= f.text_field :last_name %></div>
+		<div class="user__textfield">E-mail: <%= f.text_field :email %></div>	
+		<%= f.submit "Сохранить", method: "patch", class:"button_redirect" %>
+		<%= link_to "Назад", admin_panel_path ,class:"button_redirect" %>
+	<% end %>
+	<% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+</div>

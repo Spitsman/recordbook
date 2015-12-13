@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy', as: :logout
   get 'admin_panel' => 'users#all', as: :admin_panel
   delete 'destroy_user' => 'users#destroy', as: :destroy_user
-  post 'update' => 'users#update', as: :update
+  get 'profile/:id/update' => 'users#edit' , as: :edit
+  patch 'profile/:id' => 'users#update', as: :update
 end

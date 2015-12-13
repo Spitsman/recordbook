@@ -1,8 +1,8 @@
 <div class="login-form wrapper">
   <span class="login-form__title">Войдите</span>
   <%= form_for :session, url: login_path do |f| %> 
-    <%= f.text_field :email, :placeholder => "Email" , class:"login-form__text"%> </br>  
-    <%= f.password_field :password, :placeholder => "Пароль" , class:"login-form__text"%> </br>
+    <%= f.text_field :email, :placeholder => "Email" , class:"login-form__text"%> 
+    <%= f.password_field :password, :placeholder => "Пароль" , class:"login-form__text"%> 
     <%= f.submit "Войти", class:"login-form__submit" %>
   <% end %>
 </div>
