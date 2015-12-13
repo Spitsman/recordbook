@@ -6,6 +6,7 @@
 	<span class="user__textfield">За первый семестр по матлогу:<%= semesters_collection[0].matlog unless semesters_collection[0].nil? %></span> 
 	<% if current_user.admin? %>
 	<%= link_to 'Удалить студента', destroy_user_path(id: resource_user.id), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"admin-panel__user-button" %>
+	<%= link_to "Изменить", update_path, method: 'post', class:"admin-panel__user-button" %>
 	<%= link_to "Назад", admin_panel_path ,class:"admin-panel__user-button" %>
 	<% else %>
 		<%= link_to 'Выйти', logout_path, method: 'delete' , class:"admin-panel__user-button" %>
