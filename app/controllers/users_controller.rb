@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	helper_method :resource_user, :users_collection, :semesters_collection
+	helper_method :users_collection, :semesters_collection
 
 	before_action :require_user, only: [:show, :all]
 	before_action :require_admin, only: [:all, :create, :new, :destroy, :edit, :update]
@@ -37,29 +37,16 @@ class UsersController < ApplicationController
 		if resource_user.update(user_params)
 			redirect_to(edit_path, :notice => "Пользователь изменен")
 		else 
-			 redirect_to(edit_path, :notice => "Что-то пошло не так...")
+			redirect_to(edit_path, :notice => "Что-то пошло не так...")
 		end
 	end
 
-	def save
+	def save#wtf
 		resource_user.save
 		redirect_to root_path
 	end
 
 	private
-
-	def resource_user
-		@resource_user ||=
-			if current_user.admin?
-					if params[:id].nil?
-						current_user
-					else
-						User.find(params[:id])
-					end
-				else
-					User.find(session[:user_id])
-			end
-	end
 
 	def semesters_collection
 		@semesters_collection ||= resource_user.semesters

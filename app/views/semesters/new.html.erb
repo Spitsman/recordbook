@@ -1,0 +1,10 @@
+<%= form_for :semester do |f| %>
+	<%= f.text_field :number, :placeholder => "Номер семестра" %></br> <!-- сделать обязательным для заполнения, иначе ломается -->
+	<%= f.text_field :matlog, :placeholder => "Матлог" %></br>
+	<%= f.text_field :discrete_math, :placeholder => "Дискретка" %></br>
+	<%= f.text_field :toi, :placeholder => "ТОИ" %></br>
+	<%= f.text_field :linal, :placeholder => "Линал" %></br>
+	<%= f.text_field :ptms, :placeholder => "Теорвер" %></br>
+	<%= f.text_field :differential_equations, :placeholder => "Диффуры" %></br>
+	<%= f.submit "Create semester" %>
+<% end %>

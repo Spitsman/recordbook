@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210135548) do
+ActiveRecord::Schema.define(version: 20151217182235) do
 
   create_table "infopages", force: :cascade do |t|
     t.string   "img_url"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20151210135548) do
     t.string   "name"
     t.string   "faculty"
     t.string   "adress"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
   end
 
   create_table "semesters", force: :cascade do |t|
@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(version: 20151210135548) do
     t.integer "ptms"
     t.boolean "differential_equations"
     t.integer "user_id"
+    t.integer "number"
+    t.integer "linal"
+    t.integer "discrete_math"
+    t.integer "toi"
   end
 
   add_index "semesters", ["user_id"], name: "index_semesters_on_user_id"
@@ -47,9 +51,6 @@ ActiveRecord::Schema.define(version: 20151210135548) do
     t.string   "adress"
     t.string   "faculty"
     t.string   "password_digest"
-  end
-
-  create_table "users_tables", force: :cascade do |t|
   end
 
 end

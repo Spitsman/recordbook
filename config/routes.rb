@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   delete 'destroy_user' => 'users#destroy', as: :destroy_user
   get 'profile/:id/update' => 'users#edit' , as: :edit
   patch 'profile/:id' => 'users#update', as: :update
+  get 'semesters/:id/new' => 'semesters#new', as: :new_semester
+  post 'semesters/:id/new' => 'semesters#create', as: :save_semester
+  delete "semesters/:id/delete/:number" => 'semesters#destroy', as: :delete_semester
 end

@@ -3,11 +3,25 @@
 	<span class="user__textfield">Имя:<%= resource_user.first_name %></span>
  	<span class="user__textfield">Фамилия:<%= resource_user.last_name %></span>
 	<span class="user__textfield">E-mail:<%= resource_user.email %></span> 
-	<span class="user__textfield">За первый семестр по матлогу:<%= semesters_collection[0].matlog unless semesters_collection[0].nil? %></span> 
+	<br>
+
+	<% semesters_collection.map do |s| %>
+		<span class="user__textfield"> <%= s.number %> семестр </span> 
+		<span class="user__textfield"> Матлог:<%= s.matlog %></span> 
+		<span class="user__textfield"> Теорвер:<%= s.ptms %></span> 
+		<span class="user__textfield"> Диффуры:<%= s.differential_equations %></span> 
+		<span class="user__textfield"> ТОИ:<%= s.toi %></span> 
+		<span class="user__textfield"> Дискретка:<%= s.discrete_math %></span> 
+		<span class="user__textfield"> Линал:<%= s.linal %></span> 
+		<%= link_to 'Удалить семестр', delete_semester_path(number: s.number), method: 'delete' %>
+		<br><br>
+	<% end %>
+
 	<% if current_user.admin? %>
-	<%= link_to 'Удалить студента', destroy_user_path(id: resource_user.id), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"button_delete" %>
-	<%= link_to "Изменить", edit_path(resource_user.id), method: 'get', class:"button_redirect" %>
-	<%= link_to "Назад", admin_panel_path ,class:"button_redirect" %>
+		<%= link_to 'Удалить студента', destroy_user_path(id: resource_user.id), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"button_delete" %>
+		<%= link_to "Изменить", edit_path(id: resource_user.id), method: 'get', class:"button_redirect" %>
+		<%= link_to "Добавить семестр", new_semester_path, method: 'get', class:"button_redirect" %>
+		<%= link_to "Назад", admin_panel_path ,class:"button_redirect" %>
 	<% else %>
 		<%= link_to 'Выйти', logout_path, method: 'delete' , class:"button_redirect" %>
 	<% end %>
