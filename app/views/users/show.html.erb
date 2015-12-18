@@ -13,7 +13,7 @@
 		<span class="user__textfield"> ТОИ:<%= s.toi %></span> 
 		<span class="user__textfield"> Дискретка:<%= s.discrete_math %></span> 
 		<span class="user__textfield"> Линал:<%= s.linal %></span> 
-		<%= link_to 'Удалить семестр', delete_semester_path(number: s.number), method: 'delete' %>
+		<%= link_to 'Удалить семестр', delete_semester_path(number: s.number), method: 'delete' if current_user.admin? %>
 		<br><br>
 	<% end %>
 
