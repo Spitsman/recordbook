@@ -4,8 +4,8 @@ class SemestersController < ApplicationController
 	end
 
 	def create
-		if resouce_semester.save
-			resource_user.semesters.push resouce_semester
+		if resource_semester.save
+			resource_user.semesters.push resource_semester
 			redirect_to user_path
 		else
 			render :new
@@ -19,8 +19,8 @@ class SemestersController < ApplicationController
 
 	private
 
-	def resouce_semester
-		@resouce_semester ||= Semester.new(semester_params)
+	def resource_semester
+		@resource_semester ||= Semester.new(semester_params)
 	end
 
 	def semester_params

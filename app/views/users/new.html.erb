@@ -1,6 +1,7 @@
 <div class="login-form wrapper">
   <span class="login-form__title signup_title">Зарегистрируйте студента</span>
   <%= form_for :user, url: signup_path do |f| %>
+    <%= f.error_messages :header_message => nil, :message => nil, :header_tag => :h3 %>
     <%= f.text_field :first_name, :placeholder => "Имя" , class:"login-form__text" %>
     <%= f.text_field :last_name, :placeholder => "Фамилия", class:"login-form__text" %>
     <%= f.text_field :email, :placeholder => "E-mail",class:"login-form__text" %>

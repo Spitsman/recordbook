@@ -1,4 +1,5 @@
-<%= form_for :semester do |f| %>
+<%= form_for :semester, url: new_semester_path do |f| %>
+	<%= f.error_messages %><br>
 	<%= f.text_field :number, :placeholder => "Номер семестра" %></br> <!-- сделать обязательным для заполнения, иначе ломается -->
 	<%= f.text_field :matlog, :placeholder => "Матлог" %></br>
 	<%= f.text_field :discrete_math, :placeholder => "Дискретка" %></br>
