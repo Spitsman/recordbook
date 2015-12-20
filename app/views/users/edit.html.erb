@@ -1,8 +1,8 @@
 <div class="wrapper user">
 	<%= form_for (resource_user) do |f| %>
-	<div class="user__textfield">Имя: <%= f.text_field :first_name %></div>
-	<div class="user__textfield">Фамилия: <%= f.text_field :last_name %></div>
-		<div class="user__textfield">E-mail: <%= f.text_field :email %></div>	
+		<%= f.text_field :first_name , placeholder: "Имя" , class:"user__edit-field" %>
+		<%= f.text_field :last_name , placeholder: "Фамилия" , class:"user__edit-field" %>
+		<%= f.email_field :email  , placeholder: "Email", class:"user__edit-field"  %>	
 		<%= f.submit "Сохранить", method: "patch", class:"button_redirect" %>
 		<%= link_to "Назад", user_path ,class:"button_redirect" %>
 	<% end %>

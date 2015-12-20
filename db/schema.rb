@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20151217182235) do
     t.string   "name"
     t.string   "faculty"
     t.string   "adress"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "semesters", force: :cascade do |t|
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 20151217182235) do
     t.string   "adress"
     t.string   "faculty"
     t.string   "password_digest"
+  end
+
+  create_table "users_tables", force: :cascade do |t|
   end
 
 end

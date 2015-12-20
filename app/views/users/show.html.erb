@@ -1,25 +1,54 @@
 <div class="user wrapper">
 	<span class="user__title">Профиль студента</span>
-	<span class="user__textfield">Имя:<%= resource_user.first_name %></span>
- 	<span class="user__textfield">Фамилия:<%= resource_user.last_name %></span>
-	<span class="user__textfield">E-mail:<%= resource_user.email %></span> 
-	<br>
+	<div class="user__info clearfix">
+		<span class="user__info-field">Имя:</span>
+		<span class="user__info-field"><%= resource_user.first_name %></span>
+		<span class="user__info-field">Фамилия:</span>
+		<span class="user__info-field"><%= resource_user.last_name %></span>
+		<span class="user__info-field">E-mail:</span>
+		<span class="user__info-field"><%= resource_user.email %></span> 
+	</div>
 
 	<% semesters_collection.map do |s| %>
-		<span class="user__textfield"> <%= s.number %> семестр </span> 
-		<span class="user__textfield"> Матлог:<%= s.matlog %></span> 
-		<span class="user__textfield"> Теорвер:<%= s.ptms %></span> 
-		<span class="user__textfield"> Диффуры:<%= s.differential_equations %></span> 
-		<span class="user__textfield"> ТОИ:<%= s.toi %></span> 
-		<span class="user__textfield"> Дискретка:<%= s.discrete_math %></span> 
-		<span class="user__textfield"> Линал:<%= s.linal %></span> 
-		<%= link_to 'Удалить семестр', delete_semester_path(number: s.number), method: 'delete' if current_user.admin? %>
-		<br><br>
+	<table class="semester__table">
+		<th class="semester__table_th" colspan="2"><%= s.number %> семестр</th>
+		<tr class="semester__table_tr">
+			<td class="semester__table_td">Матлог</td>
+			<td class="semester__table_td"><%= s.matlog %></td>
+		</tr>
+		<tr class="semester__table_tr">
+			<td class="semester__table_td">Теорвер</td>
+			<td class="semester__table_td"><%= s.ptms %></td>
+		</tr>
+		<tr class="semester__table_tr">
+			<td class="semester__table_td">Диффуры</td>
+			<td class="semester__table_td"><%= s.differential_equations %></td>
+		</tr>
+		<tr class="semester__table_tr">
+			<td class="semester__table_td">ТОИ</td>
+			<td class="semester__table_td"><%= s.toi %></td>
+		</tr>
+		<tr class="semester__table_tr">
+			<td class="semester__table_td">Дискретка</td>
+			<td class="semester__table_td"><%= s.discrete_math %></td>
+		</tr>
+		<tr class="semester__table_tr">
+			<td class="semester__table_td">Линал</td>
+			<td class="semester__table_td"><%= s.linal %></td>
+		</tr>
+		<% if current_user.admin? %>
+		<tr>
+			<td colspan="2" >
+				<%= link_to 'Удалить семестр', delete_semester_path(number: s.number), method: 'delete' , data: { confirm: 'Вы уверены, что хотите удалить этот семестр?' } ,class:"button_delete" %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
 	<% end %>
 
 	<% if current_user.admin? %>
 		<%= link_to 'Удалить студента', destroy_user_path(id: resource_user.id), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"button_delete" %>
-		<%= link_to "Изменить", edit_path(id: resource_user.id), method: 'get', class:"button_redirect" %>
+		<%= link_to "Изменить данные", edit_path(id: resource_user.id), method: 'get', class:"button_redirect" %>
 		<%= link_to "Добавить семестр", new_semester_path, method: 'get', class:"button_redirect" %>
 		<%= link_to "Назад", admin_panel_path ,class:"button_redirect" %>
 	<% else %>

@@ -1,11 +1,14 @@
-<%= form_for :semester, url: new_semester_path do |f| %>
-	<%= f.error_messages %><br>
-	<%= f.text_field :number, :placeholder => "Номер семестра" %></br> <!-- сделать обязательным для заполнения, иначе ломается -->
-	<%= f.text_field :matlog, :placeholder => "Матлог" %></br>
-	<%= f.text_field :discrete_math, :placeholder => "Дискретка" %></br>
-	<%= f.text_field :toi, :placeholder => "ТОИ" %></br>
-	<%= f.text_field :linal, :placeholder => "Линал" %></br>
-	<%= f.text_field :ptms, :placeholder => "Теорвер" %></br>
-	<%= f.text_field :differential_equations, :placeholder => "Диффуры" %></br>
-	<%= f.submit "Create semester" %>
-<% end %>
+<div class="semester wrapper">
+	<%= form_for :semester, url: new_semester_path do |f| %>
+		<%= f.error_messages %></br>
+		<%= f.text_field :number, :placeholder => "Номер семестра" ,class:"semester__edit-field"%> <!-- сделать обязательным для заполнения, иначе ломается -->
+		<%= f.text_field :matlog, :placeholder => "Матлог",class:"semester__edit-field" %>
+		<%= f.text_field :discrete_math, :placeholder => "Дискретка",class:"semester__edit-field" %>
+		<%= f.text_field :toi, :placeholder => "ТОИ" ,class:"semester__edit-field"%>
+		<%= f.text_field :linal, :placeholder => "Линал",class:"semester__edit-field" %>
+		<%= f.text_field :ptms, :placeholder => "Теорвер",class:"semester__edit-field" %>
+		<%= f.text_field :differential_equations, :placeholder => "Диффуры",class:"semester__edit-field" %>
+		<%= f.submit "Добавить семестр",class:"button_redirect" %>
+		<%= link_to "Назад", :back , class:"button_redirect" %>
+	<% end %>
+</div>
