@@ -9,6 +9,7 @@
 		<%= f.text_field :ptms, :placeholder => "Теорвер",class:"semester__edit-field" %>
 		<%= f.text_field :differential_equations, :placeholder => "Диффуры",class:"semester__edit-field" %>
 		<%= f.submit "Добавить семестр",class:"button_redirect" %>
-		<%= link_to "Назад", :back , class:"button_redirect" %>
+		<%= link_to "Вернуться к просмотру студента", :back , class:"button_redirect" %>
+		<%= link_to "Вернуться в админ-панель", admin_panel_path ,class:"button_redirect" %>
 	<% end %>
 </div>

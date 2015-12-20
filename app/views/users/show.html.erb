@@ -47,10 +47,10 @@
 	<% end %>
 
 	<% if current_user.admin? %>
-		<%= link_to 'Удалить студента', destroy_user_path(id: resource_user.id), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"button_delete" %>
-		<%= link_to "Изменить данные", edit_path(id: resource_user.id), method: 'get', class:"button_redirect" %>
 		<%= link_to "Добавить семестр", new_semester_path, method: 'get', class:"button_redirect" %>
-		<%= link_to "Назад", admin_panel_path ,class:"button_redirect" %>
+		<%= link_to "Изменить данные", edit_path(id: resource_user.id), method: 'get', class:"button_redirect" %>
+		<%= link_to 'Удалить студента', destroy_user_path(id: resource_user.id), method: 'delete', data: { confirm: 'Вы уверены, что хотите удалить студента из базы?' }, class:"button_delete" %>
+		<%= link_to "Вернуться в админ-панель", admin_panel_path ,class:"button_redirect" %>
 	<% else %>
 		<%= link_to 'Выйти', logout_path, method: 'delete' , class:"button_redirect" %>
 	<% end %>
